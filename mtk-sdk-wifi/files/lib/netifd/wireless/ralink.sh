@@ -40,7 +40,7 @@ ralink_setup_ap(){
 	iwpriv $ifname set NoForwarding=$isolate
 	iwpriv $ifname set NoForwardingBTNBSSID=$isolate
 	iwpriv $ifname set NoForwardingMBCast=$isolate
-	
+
 	[ "$hidden" = 1 ] || hidden=0
 	iwpriv $ifname set HideSSID=$hidden
 
@@ -158,13 +158,14 @@ drv_ralink_setup() {
 
 	sta_disabled="$(uci get wireless.sta.disabled)"
 
-	[ "${sta_disabled}" = "1" ] && bcn_active=1
+	#[ "${sta_disabled}" = "1" ] && bcn_active=1
+	bcn_active=1
 
 	json_select config
 	json_get_vars variant country channel htmode log_level short_preamble noscan:0
 	json_select ..
 
-	[ "$short_preamble" = 1 ] || short_preamble=0 
+	[ "$short_preamble" = 1 ] || short_preamble=0
 
 	case ${htmode:-none} in
 	HT20)
