@@ -13,7 +13,7 @@ sed -i "s/.*linkit$//g" /etc/opkg/distfeeds.conf
 #uci delete uhttpd.main.alias
 #uci commit uhttpd
 
-[ "$(uci get system.@system[-1].linkit_firstboot)" = "1" ] && return 0
+#[ "$(uci get system.@system[-1].linkit_firstboot)" = "1" ] && return 0
 
 . /lib/ramips.sh
 #board=$(ramips_board_name)
@@ -23,6 +23,9 @@ sed -i "s/.*linkit$//g" /etc/opkg/distfeeds.conf
 
 #uci set system.@system[-1].hostname="mylinkit"
 uci set wireless.radio0.disabled=0
+uci set wireless.sta.disabled=0
+uci set wireless.ap.key='12345678'
+uci set wireless.ap.encryption='psk2'
 uci set network.lan.ipaddr=192.168.100.1
 
 #SSID=`fw_printenv -n wifi_ssid`
@@ -45,7 +48,7 @@ uci set network.lan.ipaddr=192.168.100.1
 uci set network.wan=interface
 uci set network.wan.proto=dhcp
 
-uci set mountd.mountd.path=/mnt/
+#uci set mountd.mountd.path=/mnt/
 
 uci commit
 return 0
