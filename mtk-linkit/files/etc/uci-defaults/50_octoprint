@@ -14,6 +14,8 @@ if __name__ == '__main__':
     )
 EOF
 
+chmod 755 /usr/bin/octoprint
+
 ln -s /lib/libc.so.0 /lib/libc.so.6
 
 # link all py packages from sd card
