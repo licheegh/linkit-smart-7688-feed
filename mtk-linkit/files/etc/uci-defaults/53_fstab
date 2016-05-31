@@ -2,11 +2,11 @@
 
 . /lib/functions.sh
 
+uci delete fstab.@mount[0]
+uci add fstab mount
 uci set fstab.@mount[0].target='/mnt'
 uci set fstab.@mount[0].options='sync'
 uci set fstab.@mount[0].device='/dev/mmcblk0p1'
-uci delete fstab.@mount[0].uuid
-uci delete fstab.@mount[0].enabled
 
 uci commit
 
