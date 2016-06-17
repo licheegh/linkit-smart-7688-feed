@@ -1,5 +1,24 @@
 #!/bin/sh
 
+# create a octoprint file in init
+# octoprint will auto start after following command
+# /etc/init.d/octoprint enable
+cat > /etc/init.d/octoprint << EOF
+#!/bin/sh /etc/rc.common
+
+START=99
+
+start() {
+	echo start octoprint
+	. /etc/profile
+	start_octoprint
+}
+EOF
+
+chmod 755 /etc/init.d/octoprint
+
+/etc/init.d/octoprint disable
+
 # required for octorprint
 ln -s /lib/libc.so.0 /lib/libc.so.6
 

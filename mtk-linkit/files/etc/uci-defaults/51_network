@@ -51,4 +51,8 @@ uci set network.wan.proto=dhcp
 #uci set mountd.mountd.path=/mnt/
 
 uci commit
+
+# add a host for local access
+echo address=/yeeh.aw/192.168.100.1 >> /etc/dnsmasq.conf
+
 return 0
