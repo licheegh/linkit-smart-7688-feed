@@ -1,0 +1,25 @@
+#!/bin/sh
+
+. /lib/functions.sh
+
+uci set system.@system[0].hostname="yeehaw3d"
+uci set system.@system[0].timezone="CST-8"
+
+uci delete system.@timeserver[0]
+
+uci commit
+
+cat >> /etc/config/system<< EOF
+config timeserver 'ntp'
+        list server 'time1.aliyun.com'
+        list server 'time2.aliyun.com'
+        list server 'time3.aliyun.com'
+        list server 'time4.aliyun.com'
+        list server 'time5.aliyun.com'
+        list server 'time6.aliyun.com'
+        list server 'time7.aliyun.com'
+        option enabled '1'
+        option enable_server '0'
+EOF
+
+exit 0
