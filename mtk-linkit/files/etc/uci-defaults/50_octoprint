@@ -17,7 +17,7 @@ EOF
 
 chmod 755 /etc/init.d/octoprint
 
-/etc/init.d/octoprint disable
+/etc/init.d/octoprint enable
 
 # required for octorprint
 ln -s /lib/libc.so.0 /lib/libc.so.6
