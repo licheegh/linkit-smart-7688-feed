@@ -160,7 +160,6 @@ drv_ralink_setup() {
 
 	linkit_mode="$(uci get wireless.radio0.linkit_mode)"
 	[ "${linkit_mode}" != "sta" ] && bcn_active=1
-	#bcn_active=1
 
 	json_select config
 	json_get_vars variant region country channel htmode log_level short_preamble noscan:0
